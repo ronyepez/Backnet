@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "h1S286raHKkOEJTlThRLoDaJx8FfqBImknhj2NdBuyUaqApH665kEzuIIUGs4fgskfdrKVwXcvB95qeE/YoTKg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ryepez\\Documents\\Visual Studio 2019\\ProyectoElipgo\\API_Backnet\\ENTIDAD\\ENTIDAD.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ryepez\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\ryepez\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

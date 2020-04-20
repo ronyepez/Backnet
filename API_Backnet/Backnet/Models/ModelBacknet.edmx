@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BackNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="articles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="total_in_shelf" Type="int" Nullable="false" />
+          <Property Name="total_in_vault" Type="int" Nullable="false" />
+          <Property Name="store_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_articles_stores">
+          <End Role="stores" Type="Self.stores" Multiplicity="1" />
+          <End Role="articles" Type="Self.articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stores">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles">
+              <PropertyRef Name="store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BackNetModelStoreContainer">
+          <EntitySet Name="articles" EntityType="Self.articles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stores" EntityType="Self.stores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_articles_stores" Association="Self.FK_articles_stores">
+            <End Role="stores" EntitySet="stores" />
+            <End Role="articles" EntitySet="articles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BackNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BackNetEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="articles" EntityType="BackNetModel.articles" />
+          <EntitySet Name="stores" EntityType="BackNetModel.stores" />
+          <AssociationSet Name="FK_articles_stores" Association="BackNetModel.FK_articles_stores">
+            <End Role="stores" EntitySet="stores" />
+            <End Role="articles" EntitySet="articles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="articles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="total_in_shelf" Type="Int32" Nullable="false" />
+          <Property Name="total_in_vault" Type="Int32" Nullable="false" />
+          <Property Name="store_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="stores" Relationship="BackNetModel.FK_articles_stores" FromRole="articles" ToRole="stores" />
+        </EntityType>
+        <EntityType Name="stores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="articles" Relationship="BackNetModel.FK_articles_stores" FromRole="stores" ToRole="articles" />
+        </EntityType>
+        <Association Name="FK_articles_stores">
+          <End Type="BackNetModel.stores" Role="stores" Multiplicity="1" />
+          <End Type="BackNetModel.articles" Role="articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stores">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="articles">
+              <PropertyRef Name="store_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BackNetModelStoreContainer" CdmEntityContainer="BackNetEntity">
+          <EntitySetMapping Name="articles">
+            <EntityTypeMapping TypeName="BackNetModel.articles">
+              <MappingFragment StoreEntitySet="articles">
+                <ScalarProperty Name="store_id" ColumnName="store_id" />
+                <ScalarProperty Name="total_in_vault" ColumnName="total_in_vault" />
+                <ScalarProperty Name="total_in_shelf" ColumnName="total_in_shelf" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stores">
+            <EntityTypeMapping TypeName="BackNetModel.stores">
+              <MappingFragment StoreEntitySet="stores">
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

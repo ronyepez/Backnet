@@ -1,0 +1,9 @@
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\bin\Debug\netstandard2.0\ENTIDAD.deps.json
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\bin\Debug\netstandard2.0\ENTIDAD.dll
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\bin\Debug\netstandard2.0\ENTIDAD.pdb
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\obj\Debug\netstandard2.0\ENTIDAD.csprojAssemblyReference.cache
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\obj\Debug\netstandard2.0\ENTIDAD.csproj.CoreCompileInputs.cache
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\obj\Debug\netstandard2.0\ENTIDAD.AssemblyInfoInputs.cache
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\obj\Debug\netstandard2.0\ENTIDAD.AssemblyInfo.cs
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\obj\Debug\netstandard2.0\ENTIDAD.dll
+C:\Users\ryepez\Documents\Visual Studio 2019\ProyectoElipgo\API_Backnet\ENTIDAD\obj\Debug\netstandard2.0\ENTIDAD.pdb

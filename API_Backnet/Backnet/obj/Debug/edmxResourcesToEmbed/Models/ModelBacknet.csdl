@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BackNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BackNetEntity" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="articles" EntityType="BackNetModel.articles" />
+    <EntitySet Name="stores" EntityType="BackNetModel.stores" />
+    <AssociationSet Name="FK_articles_stores" Association="BackNetModel.FK_articles_stores">
+      <End Role="stores" EntitySet="stores" />
+      <End Role="articles" EntitySet="articles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="articles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Double" Nullable="false" />
+    <Property Name="total_in_shelf" Type="Int32" Nullable="false" />
+    <Property Name="total_in_vault" Type="Int32" Nullable="false" />
+    <Property Name="store_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="stores" Relationship="BackNetModel.FK_articles_stores" FromRole="articles" ToRole="stores" />
+  </EntityType>
+  <EntityType Name="stores">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="articles" Relationship="BackNetModel.FK_articles_stores" FromRole="stores" ToRole="articles" />
+  </EntityType>
+  <Association Name="FK_articles_stores">
+    <End Type="BackNetModel.stores" Role="stores" Multiplicity="1" />
+    <End Type="BackNetModel.articles" Role="articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stores">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="articles">
+        <PropertyRef Name="store_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,6 @@
+
+1. Ejecutar el script 'scriptBD.sql' ubicado dentro de la carpeta 'script' del proyecto. 
+2. Editar los valores de la conexión en el 'Web.config' del proyecto 'Backnet' y 'App.config' del proyecto 'PRESENTACION'
+3. Editar en las clases frmStore y frmArticles la línea 21 (private string url = "https://localhost:44381/";) y colocar los valores correctos del servidor.
+4. Ejecutar el proyecto en visual estudio
+5. Hacer clic derecho sobre el proyecto 'PRESENTACION' y luego ir a 'Debug' ==> 'Star New Instance'

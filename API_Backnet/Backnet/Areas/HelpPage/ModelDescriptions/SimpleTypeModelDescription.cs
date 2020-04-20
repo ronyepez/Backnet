@@ -1,0 +1,6 @@
+namespace Backnet.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
